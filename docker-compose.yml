@@ -1,0 +1,15 @@
+services:
+  envshare-pro:
+    build: .
+    container_name: envshare-pro
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - ENVSHARE_MODE=self-hosted
+      - MAX_FILE_SIZE_MB=100
+      - DEFAULT_READS=1
+      - DEFAULT_TTL_SECONDS=3600
+      - DATA_DIR=/app/data
+    volumes:
+      - ./data:/app/data
